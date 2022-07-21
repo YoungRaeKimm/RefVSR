@@ -202,7 +202,7 @@ class Trainer(baseTrainer):
             #             # errs_total[k] = v_t + v.item() if isinstance(v, torch.Tensor) else v * b
             #             errs_total[k] = v_t + b * v.detach().clone() if isinstance(v, torch.Tensor) else v
 
-        assert norm_ != 0
+        # assert norm_ != 0
         ## setting results for the log
         if is_log:
             outs['LR_UW'] = LR_UW_frames[:, self.config.frame_num//2]
