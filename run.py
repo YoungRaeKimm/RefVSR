@@ -217,7 +217,7 @@ def init_dist(backend='nccl', **kwargs):
 
 if __name__ == '__main__':
     project = 'RefVSR_CVPR2022'
-    mode = 'RefVSR'
+    mode = 'ERVSR'
 
     from configs.config import set_data_path
     import importlib
