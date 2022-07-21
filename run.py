@@ -248,7 +248,7 @@ if __name__ == '__main__':
         parser.add_argument('-dl', '--delete_log', action = 'store_true', default = False, help = 'whether to delete log')
         parser.add_argument('-lr', '--lr_init', type = float, default = config.lr_init, help = 'leraning rate')
         parser.add_argument('-th', '--thread_num', type = int, default = config.thread_num, help = 'number of thread')
-        parser.add_argument('-dist', '--dist', action = 'store_true', default = config.dist, help = 'whether to distributed pytorch')
+        parser.add_argument('-dist', '--dist', action = 'store_true', default = True, help = 'whether to distributed pytorch')
         parser.add_argument('-cpu', '--cpu', action = 'store_true', default = False, help = 'whether to distributed pytorch')
         parser.add_argument('-vs', '--is_verbose', action = 'store_true', default = False, help = 'whether to delete log')
         parser.add_argument('-ss', '--save_sample', action = 'store_true', default = False, help = 'whether to save_sample')
