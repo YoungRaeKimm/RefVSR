@@ -206,7 +206,7 @@ class Network(nn.Module):
 
         return forward_flow, backward_flow
 
-    def forward(self, lrs, refs):
+    def forward(self, lrs, refs, is_first_frame, is_log=False, is_train=False):
         n, t, c, h, w = lrs.size()
 
         assert h >= 64 and w >= 64, (
