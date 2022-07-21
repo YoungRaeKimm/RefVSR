@@ -3,8 +3,8 @@ import torch.nn.functional as F
 from torch import nn 
 
 from einops import rearrange
-from net.SPyNet import SPyNet
-from net.arch_util import ResidualBlockNoBN, flow_warp, make_layer
+from models.archs.SPyNet import SPyNet
+from models.archs.arch_util import ResidualBlockNoBN, flow_warp, make_layer
 import numbers
 
 ##########################################################################
