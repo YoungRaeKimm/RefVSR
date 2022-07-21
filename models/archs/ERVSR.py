@@ -145,6 +145,7 @@ class TransformerBlock(nn.Module):
 class Network(nn.Module):
     def __init__(self, config, spynet_path=None):
         super(Network, self).__init__()
+        self.config = config
         self.num_feat = config.num_feat
         self.num_block = config.num_blocks
         self.device = config.device
