@@ -368,7 +368,7 @@ if __name__ == '__main__':
         parser.add_argument('-ckpt_abs_name', '--ckpt_abs_name', type=str, default = None, help='ckpt abs name')
         parser.add_argument('-ckpt_epoch', '--ckpt_epoch', type=int, default = None, help='ckpt epoch')
         parser.add_argument('-ckpt_sc', '--ckpt_score', action = 'store_true', help='ckpt name')
-        parser.add_argument('-dist', '--dist', action = 'store_true', default = False, help = 'whether to distributed pytorch')
+        parser.add_argument('-dist', '--dist', action = 'store_true', default = True, help = 'whether to distributed pytorch')
         parser.add_argument('-cpu', '--cpu', action = 'store_true', default = False, help = 'whether to distributed pytorch')
         parser.add_argument('-eval_mode', '--eval_mode', type=str, default = 'qual_quan', help = 'evaluation mode. qual(qualitative)/quan(quantitative)')
         parser.add_argument('-test_set', '--test_set', type=str, default = 'test', help = 'test set to evaluate. test/valid')
