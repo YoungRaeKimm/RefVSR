@@ -53,7 +53,7 @@ def get_config(project = '', mode = '', config_ = '', data = '', LRS = '', batch
 
     # data dir
     config.data = 'RealMCVSR'
-    config.data_offset = '/data1/junyonglee'
+    config.data_offset = '/home/sdb'
     config.HR_data_path = None
     config.LR_data_path = None
     config.is_use_T = False
@@ -68,7 +68,7 @@ def get_config(project = '', mode = '', config_ = '', data = '', LRS = '', batch
 
     # log dirs
     config.LOG_DIR = edict()
-    log_offset = '/Bean/logs/junyonglee'
+    log_offset = './'
     offset = os.path.join(log_offset, config.project)
     offset = os.path.join(offset, '{}'.format(mode))
     config.LOG_DIR.offset = offset
