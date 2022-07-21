@@ -240,7 +240,7 @@ if __name__ == '__main__':
 
         ## DEFAULT
         parser.add_argument('-trainer', '--trainer', type = str, default = config.trainer, help = 'trainer kname')
-        parser.add_argument('-net', '--network', type = str, default = config.network, help = 'network name')
+        parser.add_argument('-net', '--network', type = str, default = 'ERVSR', help = 'network name')
         parser.add_argument('-loss', '--loss', type = str, default = config.loss, help = 'loss')
         parser.add_argument('-data_offset', '--data_offset', type = str, default = config.data_offset, help = 'root path of the dataset')
         parser.add_argument('-r', '--resume', type = str, default = config.resume, help = 'name of state or ckpt (names are the same)')
