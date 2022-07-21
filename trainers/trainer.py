@@ -142,6 +142,7 @@ class Trainer(baseTrainer):
         ## Prepare data
         LR_UW_total_frames = refine_image_pt(inputs['LR_UW'].to(self.device, non_blocking=True), self.config.refine_val_lr)
         LR_REF_W_total_frames = refine_image_pt(inputs['LR_REF_W'].to(self.device, non_blocking=True), self.config.refine_val_lr)
+        LR_REF_W_frame = LR_REF_W_total_frames[:, LR_REF_W_total_frames.size(1)//2, :, :, :].to(self.device, non_blocking=True)
         HR_UW_total_frames = refine_image_pt(inputs['HR_UW'].to(self.device, non_blocking=True), self.config.refine_val_hr)
 
         if self.config.is_use_T:
@@ -167,9 +168,9 @@ class Trainer(baseTrainer):
 
             if self.config.is_amp:
                 with torch.cuda.amp.autocast():
-                    outs = self.network(LR_UW_frames, LR_REF_W_frames, is_first_frame, is_log, is_train)
+                    outs = self.network(LR_UW_frames, LR_REF_W_frame, is_first_frame, is_log, is_train)
             else:
-                outs = self.network(LR_UW_frames, LR_REF_W_frames, is_first_frame, is_log, is_train)
+                outs = self.network(LR_UW_frames, LR_REF_W_frame, is_first_frame, is_log, is_train)
 
             #################################################################################################
 
@@ -178,7 +179,8 @@ class Trainer(baseTrainer):
             else:
                 REF_frames = HR_REF_W_total_frames[:, :i+self.config.frame_num]
 
-            errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)
+            # errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)            
+            errs = self.Loss.get_loss(outs['result'], HR_UW_frames, REF_frames, is_train, is_log, outs)
 
 
             ## Updating network & get log (learning rate, gnorm)
