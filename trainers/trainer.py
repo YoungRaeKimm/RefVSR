@@ -51,6 +51,7 @@ class Trainer(baseTrainer):
             self._set_optim()
             self._set_lr_scheduler()
             self.Loss = Loss(config)
+            self.l1_loss = nn.L1Loss()
             if config.is_verbose:
                 for name, param in self.network.named_parameters():
                     if self.rank <= 0: print(name, ', ', param.requires_grad)
@@ -180,14 +181,17 @@ class Trainer(baseTrainer):
                 REF_frames = HR_REF_W_total_frames[:, :i+self.config.frame_num]
 
             # errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)            
-            errs = self.Loss.get_loss(outs, HR_UW_frames, REF_frames, is_train, is_log, outs)
+            # errs = self.Loss.get_loss(outs, HR_UW_frames, REF_frames, is_train, is_log, outs)
+            errs = self.l1_loss(outs, HR_UW_frames)
 
 
             ## Updating network & get log (learning rate, gnorm)
-            if self.config.is_amp:
-                log = self._update_amp(errs) if is_train else None
-            else:
-                log = self._update(errs) if is_train else None
+            # if self.config.is_amp:
+            #     log = self._update_amp(errs) if is_train else None
+            # else:
+            log = self._update(errs) if is_train else None
+            
+            
 
             ## Loggging
             with torch.no_grad():
