@@ -278,7 +278,8 @@ class Network(nn.Module):
 
             sr_rlt += base
             rlt[i] = sr_rlt
-        outs = torch.stack(rlt, dim=1)
+        outs = {}
+        outs['result'] = torch.stack(rlt, dim=1)
         return outs
 
 #############################

@@ -189,8 +189,8 @@ class baseTrainer():
     def _update(self, errs):
 
         self.optimizer.zero_grad()
-        # errs['total'].backward()
-        errs.backward()
+        errs['total'].backward()
+        # errs.backward()
         torch_utils.clip_grad_norm_(self.network.parameters(), self.config.gc)
 
         # total_norm = 0

@@ -180,9 +180,9 @@ class Trainer(baseTrainer):
             else:
                 REF_frames = HR_REF_W_total_frames[:, :i+self.config.frame_num]
 
-            # errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)            
+            errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)            
             # errs = self.Loss.get_loss(outs, HR_UW_frames, REF_frames, is_train, is_log, outs)
-            errs = self.l1_loss(outs, HR_UW_frames)
+            # errs = self.l1_loss(outs, HR_UW_frames)
 
 
             ## Updating network & get log (learning rate, gnorm)
@@ -194,13 +194,13 @@ class Trainer(baseTrainer):
             
 
             ## Loggging
-            with torch.no_grad():
-                norm_ += b
-                if errs is not None:
-                    for k, v in errs.items():
-                        v_t = 0 if i == 0 else errs_total[k]
-                        # errs_total[k] = v_t + v.item() if isinstance(v, torch.Tensor) else v * b
-                        errs_total[k] = v_t + b * v.detach().clone() if isinstance(v, torch.Tensor) else v
+            # with torch.no_grad():
+            #     norm_ += b
+            #     if errs is not None:
+            #         for k, v in errs.items():
+            #             v_t = 0 if i == 0 else errs_total[k]
+            #             # errs_total[k] = v_t + v.item() if isinstance(v, torch.Tensor) else v * b
+            #             errs_total[k] = v_t + b * v.detach().clone() if isinstance(v, torch.Tensor) else v
 
         assert norm_ != 0
         ## setting results for the log
