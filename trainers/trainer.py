@@ -181,7 +181,7 @@ class Trainer(baseTrainer):
                 REF_frames = HR_REF_W_total_frames[:, :i+self.config.frame_num]
 
             # errs = self.Loss.get_loss(outs['result'], HR_UW, REF_frames, is_train, is_log, outs)            
-            errs = self.Loss.get_loss(outs, HR_UW_frames, REF_frames, is_train, is_log, outs)
+            errs = self.Loss.get_loss(outs['result'], HR_UW_frames, REF_frames, is_train, is_log, outs)
             # errs = self.l1_loss(outs, HR_UW_frames)
 
 
