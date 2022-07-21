@@ -41,8 +41,9 @@ def get_config(project = '', mode = '', config = '', data = '', LRS = '', batch_
     ## Model specifications
     config.trainer = 'trainer'
     config.network = 'RefVSR'
-    config.num_blocks = 64
-    config.mid_channels = 30
+    config.num_blocks = 30
+    config.mid_channels = 36
+    config.num_feat = 64
     config.reset_branch = config.frame_itr_num
 
     ## Dataset
