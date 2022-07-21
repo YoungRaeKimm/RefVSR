@@ -17,7 +17,6 @@ def get_config(project = '', mode = '', config = '', data = '', LRS = '', batch_
     config.lr_min = 1e-6
     config.wi = None # weight init (xavier)
     config.win = None # weight init (normal)
-    config.is_amp = True
 
     config.patch_size = 64
     config.frame_itr_num = 9
