@@ -150,7 +150,7 @@ class Network(nn.Module):
         self.device = config.device
 
         # Flow-based Feature Alignment
-        self.spynet = SPyNet(pretrained=config.spynet, device=config.device)
+        self.spynet = SPyNet(pretrained='./ckpt/SPyNet.pytorch', device=self.config.device)
 
        # Bidirectionaal Propagation
         self.forward_resblocks = ConvResBlock(config.num_feat * 2, config.num_feat, config.num_blocks)
